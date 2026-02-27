@@ -58,6 +58,10 @@
 		<div id="fetch-2plus2-result"></div>
 		<br><br>
 
+		<button onclick="fetchDice()">Roll Dice (1-6)</button>
+		<div id="dice-result"></div>
+		<br><br>
+
 		Add two integers on the Node.js server.<br />
 		<select onchange="addTwoIntegers()" id="x-value">
 			<option>1</option>
@@ -147,6 +151,20 @@
 				favoritePlacesJSONField.innerHTML = favoritePlacesText
 			}
 		</script>
+
+		<script>
+			async function fetchDice() {
+  				const baseUrl = document.getElementById("urlInput").value;
+  				const response = await fetch(baseUrl + "/roll-dice");
+  				const result = await response.text();
+ 			 	document.getElementById("dice-result").textContent =
+    			"Dice rolled: " + result;
+			}
+		</script>
+
+
+
+
 	</div>
 </body>
 </html>
